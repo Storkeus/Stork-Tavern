@@ -1,0 +1,91 @@
+
+
+#logo
+{
+	font-family: 'Lobster', cursive;
+	font-size:90px;
+	text-align:center;
+	color:#efefef;
+}
+
+#storkLogo
+{
+	color:#bb0000;
+}
+
+#menu
+{
+	margin-top:20px;
+	padding:10px;
+	margin-left:0 auto;
+	margin-right:0 auto;
+	width:1200px;
+	text-align:center;
+}
+	
+#menu>ol
+{
+	list-style-type:none;
+	display:inline-block;
+	padding:0;
+	margin:auto;
+	line-height:200%;
+
+}	
+
+#menu>ol>li
+{
+	float:left;
+	margin-right:10px;
+	font-size:20px;
+	border-bottom:1px solid #dedede;
+	width:150px;
+	text-align:center;
+}
+
+#menu>ol>li>ul
+{
+	list-style-type:none;
+	padding:0;
+	margin:0;
+	height:0px;
+	display:none;
+}
+
+#menu>ol>li:hover>ul
+{
+	display:block;
+}
+
+#menu>ol>li:hover
+{
+	border-color:#bb0000;
+}
+
+#menu>ol>li>ul>li
+{
+	background-color:#444444;
+	position: relative;
+	z-index: 100;
+	border-bottom: 1px solid #dedede;
+	margin:0;
+	padding:0px;
+	min-height:10px;
+}
+
+#menu>ol>li>ul>li:last-child
+{
+	border:none;
+}
+
+#menu>ol>li>ul>li:hover
+{
+	border-color:#bb0000;
+}
+
+a.menuLink
+{
+	color:#dedede;
+	text-decoration:none;
+	display:block;
+}
