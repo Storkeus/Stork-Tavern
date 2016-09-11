@@ -15,5 +15,8 @@
 
 		$campaignName=pathinfo($_SERVER['PHP_SELF']);
 		echo $campaignName['filename'];
+		
+		//ten plik zostanie wkrótce usunięty
+		//nie żartuj
 ?>
 </body>
