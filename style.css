@@ -41,16 +41,16 @@ body
 
 #announcements
 {
-		height:300px;
-		padding:20px;
-		width:386px;
-		font-size:30px;
-		background-color:#0a7446;
-		border:1px solid #dedede;
-		margin-top:45px;
-		text-align:center;
-		display: flex;
-		align-items: center;
+    height:300px;
+    padding:20px;
+    width:386px;
+    font-size:30px;
+    background-color:#0a7446;
+    border:1px solid #dedede;
+    margin-top:45px;
+    text-align:center;
+    display: flex;
+    align-items: center;
 }
 
 #footer

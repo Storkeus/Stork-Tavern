@@ -18,6 +18,9 @@
 	?>
 
 	<?php
+	/*
+        Connecting with database and downloading evrything about campaign
+	*/
 	require_once "connect.php";
 	$connection=@new mysqli($host,$db_user,$db_password,$db_name);
 	$connection->set_charset("utf8");
@@ -28,17 +31,7 @@
 	}
 	else
 	{
-		/*$campaignName=basename($_SERVER['PHP_SELF'],".php").PHP_EOL;
-		$resultDescription=@$connection->query("SELECT Description FROM campaigndescriptions WHERE Name=\"'$campaignName'\"");
-		if($resultDescription==false){echo 'Zapytanie nie zostało wykonane poprawnie :( '; $connection->close();}
-		
-		$queryData=$resultDescription->fetch_assoc();
-		
-		echo'<div id="description">';
-		
-		echo $queryData['Description'];
-		
-		echo'</div>';*/
+
 		$fileName=basename($_SERVER['PHP_SELF'],".php");
 		$result=@$connection->query("SELECT cmpgn_description FROM cmpgn_descriptions WHERE cmpgn_name='{$fileName}'");
 		$resultText=$result->fetch_assoc();

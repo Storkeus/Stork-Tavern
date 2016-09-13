@@ -16,6 +16,7 @@
 	include "menu.php";
 	?>
 	
+	/* connect with a SQL server and download greeting and announcement */
 	
 	<div id="content">
 	<?php
@@ -31,8 +32,11 @@
 	else
 	{
 		$result=@$connection->query("SELECT greeting, announcement FROM home WHERE id_home=1");
-		$resultText=$result->fetch_assoc();
-		echo $resultText['greeting'];
+		if($result==false){echo 'Zapytanie nie zostało wykonane poprawnie :( '; $connection->close();}
+		{
+            $resultText=$result->fetch_assoc();
+            echo $resultText['greeting'];
+		}
 	}
 	
 	?>

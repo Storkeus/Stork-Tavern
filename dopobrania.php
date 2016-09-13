@@ -13,6 +13,10 @@
 	<div id="container">
 	
 		<?php
+		/*
+		Connecting with SQL database and downloading list of files to download
+		*/
+		
 		include "menu.php";
 
 			require_once "connect.php";
