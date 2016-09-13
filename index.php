@@ -16,10 +16,13 @@
 	include "menu.php";
 	?>
 	
-	/* connect with a SQL server and download greeting and announcement */
+
 	
 	<div id="content">
-	<?php
+	<?php	
+	
+	/* connect with a SQL server and download greeting and announcement */
+	
 	require_once "connect.php";
 	
 	$connection = @new mysqli($host, $db_user, $db_password, $db_name);
