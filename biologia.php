@@ -35,7 +35,30 @@
 		$fileName=basename($_SERVER['PHP_SELF'],".php");
 		$result=@$connection->query("SELECT cmpgn_description FROM cmpgn_descriptions WHERE cmpgn_name='{$fileName}'");
 		$resultText=$result->fetch_assoc();
+		
+		echo '<div id="campaignDescription">';
 		echo $resultText['cmpgn_description'];
+		echo '</div>';
+		
+		$result=@$connection->query("SELECT cmpgn_category_name, cmpgn_category, cmpgn_category_miniature FROM cmpgn_content WHERE cmpgn_name='{$fileName}'");
+		if($result==false){echo 'Zapytanie nie zostało wykonane poprawne :('; $connection.close();}
+		else
+		{
+            echo '<div id="campaignMenu">';
+            while(($option=$result->fetch_assoc())!=null)
+            {
+              echo'
+              <button type="button" class="option">
+                <img src="'.$option['cmpgn_category_miniature'].'"><br>
+                <span class="optionTitle">'.$option['cmpgn_category_name'].'</span>
+              </div>
+              ';
+            }
+            echo '</div>';
+		}
+		
+		
+		
 	}
 	?>
 	
