@@ -7,6 +7,8 @@
 <title> Tawerna pod bocianem - strona grupy RPG</title>
 <link rel="stylesheet" href="style.css" type="text/css">
 <link href='https://fonts.googleapis.com/css?family=Lato|Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+
 </head>
 
 <body>
@@ -48,7 +50,7 @@
             while(($option=$result->fetch_assoc())!=null)
             {
               echo'
-              <button type="button" class="option">
+              <button  class="option" onclick="loadDoc('."'".$option['cmpgn_category_name']."'".')">
                 <img src="'.$option['cmpgn_category_miniature'].'"><br>
                 <span class="optionTitle">'.$option['cmpgn_category_name'].'</span>
               </div>
@@ -62,8 +64,28 @@
 	}
 	?>
 	
+	<div id="optionContent"></div>
+	
 	
 </div>
+
+<script>
+function loadDoc(choose) {
+    if (choose.length == 0) {
+        document.getElementById("optionContent").innerHTML = "";
+        return;
+    } else {
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("optionContent").innerHTML = this.responseText;
+            }
+        };
+        xmlhttp.open("GET", "cmpgn.php?choose=" + choose, true);
+        xmlhttp.send();
+    }
+}
+</script>
 
 	<div id="footer">
 	Wstąp do tawerny! Bartosz Łyżwa &copy 2016
