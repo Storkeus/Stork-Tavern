@@ -7,6 +7,16 @@
 <title> Tawerna pod bocianem - strona grupy RPG</title>
 <link rel="stylesheet" href="style.css" type="text/css">
 <link href='https://fonts.googleapis.com/css?family=Lato|Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+<script>
+var option="";
+ function loadSite(var choose)
+ {
+ option=choose;
+ document.getElementById("hOption").innerHTML=option;
+ document.getElementByIf("hOption").submit();
+ }
+</script>
 </head>
 
 <body>
@@ -48,7 +58,7 @@
             while(($option=$result->fetch_assoc())!=null)
             {
               echo'
-              <button type="button" class="option">
+              <button type="button" class="option" onclick="loadSite('.$option['cmpgn_category_name'.')">
                 <img src="'.$option['cmpgn_category_miniature'].'"><br>
                 <span class="optionTitle">'.$option['cmpgn_category_name'].'</span>
               </div>
@@ -56,7 +66,10 @@
             }
             echo '</div>';
 		}
-		
+	echo '<div id="campaignContent">';
+	$result=$connection->query("SELECT cmpgn_category FROM cmpgm_content WHERE cmpgn_category_name='{$GET['hOption']}'");
+	
+	echo '<\div>';
 		
 		
 	}
@@ -68,5 +81,9 @@
 	<div id="footer">
 	Wstąp do tawerny! Bartosz Łyżwa &copy 2016
 	</div>
+	
+	<form method="GET" id="hForm">
+	<input id="hOption" type="text"></input>
+	</form>
 	
 </body>
