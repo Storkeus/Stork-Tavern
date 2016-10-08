@@ -34,7 +34,6 @@
 	}
 	else
 	{
-
 		$fileName=basename($_SERVER['PHP_SELF'],".php");
 		$result=@$connection->query("SELECT cmpgn_description FROM cmpgn_descriptions WHERE cmpgn_name='{$fileName}'");
 		$resultText=$result->fetch_assoc();
@@ -77,5 +76,3 @@
 	<div id="footer">
 	Wstąp do tawerny! Bartosz Łyżwa &copy 2016
 	</div>
-	
-</body>
