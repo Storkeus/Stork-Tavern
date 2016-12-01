@@ -103,8 +103,7 @@ button:hover,input[type=submit]:hover
 
 button:active,input[type=submit]:active
 {
-	background-color:#111;
-	border-color:#bb0000;
+	border-color:#dedede;
 }
 
 #campaignDescription
@@ -172,13 +171,14 @@ button:active,input[type=submit]:active
 input[type=text],
 input[type=password]
 {
-    width:150px;
-    height:30px;
+    width:160px;
+    height:40px;
     background-color:#dedede;
     color:#333333;
     margin-right:5px;
     border:2px solid #333;
-    padding:3;
+    padding:10px;
+    box-sizing: border-box;
 }
 
 input[type=text]:focus,
@@ -187,3 +187,24 @@ input[type=password]:focus
     border:2px solid #0a7446;
 }
 
+
+
+.error
+{
+    font-size:20px;
+    color:#ff0000;
+}
+
+select
+{
+}
+
+#cke_editor1
+{
+}
+
+select
+{
+    float:left;
+    margin: 10px;
+}

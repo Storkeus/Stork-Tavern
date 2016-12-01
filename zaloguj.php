@@ -1,3 +1,13 @@
+<?php
+session_start();
+
+if(isset($_SESSION['logged'])&&$_SESSION['logged']=true)
+{
+header("Location: index.php");
+exit();
+}
+?>
+
 <!DOCTYPE HTML>
 <html lang="pl">
 
@@ -13,19 +23,25 @@
 	<div id="container">
 	
 	<?php
-	include "menu.php";
+	require_once "menu.php";
 	?>
 	
 
-	<div id="loginContainer">
-        <form method="post">
+	<div id="loginContainer" >
+	<?php
+            if(isset($_SESSION['errorLogin']))
+            echo $_SESSION['errorLogin'];
+        ?>
+        <form method="post" action="logowanie.php" autocomplete="on">
         <input type="text" name="login" placeholder="LOGIN">
         <input type="password" name="password" placeholder="HASŁO">
         <input type="submit" value="Zaloguj się">
         </form>
+        
+
+        
     </div>
 
-	
 	
 	
 </div>

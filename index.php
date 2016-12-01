@@ -15,7 +15,6 @@
 	<?php
 	include "menu.php";
 	?>
-	
 
 	
 	<div id="content">
