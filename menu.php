@@ -36,11 +36,13 @@
 	
         if ($logged)
         {
-            $query="SELECT * FROM menu_category_names WHERE menu_when_show='logged' OR menu_when_show='always' ORDER BY menu_category_order";
+            $query="SELECT * FROM menu_category_names WHERE (menu_when_show='logged' OR menu_when_show='always')AND menu_site_type!='usunięta' ORDER BY menu_category_order";
+            echo '<link rel="stylesheet" href="css/fontello.css" type="text/css">';
+            echo '<script src="edit.js"></script>';
         }
         else
         {
-            $query="SELECT * FROM menu_category_names WHERE menu_when_show='notlogged' OR menu_when_show='always' ORDER BY menu_category_order";
+            $query="SELECT * FROM menu_category_names WHERE (menu_when_show='notlogged' OR menu_when_show='always')AND menu_site_type!='usunięto' ORDER BY menu_category_order";
         }
 	
 	
@@ -51,7 +53,7 @@
         while(($categories=$result->fetch_assoc())!=null)
         {                    
                             
-            echo '<li><a class="menuLink" href="'.$categories['menu_category_direction'].'">'.$categories['menu_category_name'].'</a>';
+            echo '<li><div  id="menuLink_'.$categories['menu_category_name'].'"><a class="menuLink" href="'.$categories['menu_category_direction'].'">'.$categories['menu_category_name'].'</a><i onclick="editSubsiteName(\''.$categories['menu_category_name'].'\');" class="editIcon  icon-pencil"></i></div>';
             
             
         if ($logged)
@@ -73,7 +75,7 @@
                 while(($subsites=$resultSubsites->fetch_assoc())!=null)
                 {
 
-                    echo '<li><a href="'.$subsites['menu_subsite_direction'].'" class="menuLink">'.$subsites['menu_subsite_name'].'</a></li>';
+                    echo '<li><div id="subsiteLink_'.$subsites['menu_subsite_name'].'"><a href="'.$subsites['menu_subsite_direction'].'" class="menuLink">'.$subsites['menu_subsite_name'].'</a><i onclick="editSubSubsiteName(\''.$subsites['menu_subsite_name'].'\');" class="editIcon  icon-pencil"></i></div></li>';
                 }
             
                 echo '</ul>';

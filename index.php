@@ -44,7 +44,6 @@
 	?>
 	</div>
 	
-	
 	<div id="announcements">
 	<?php
 	echo $resultText['announcement'];	
