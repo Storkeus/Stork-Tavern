@@ -7,6 +7,7 @@
 <title> Tawerna pod bocianem - strona grupy RPG</title>
 <link rel="stylesheet" href="style.css" type="text/css">
 <link href='https://fonts.googleapis.com/css?family=Lato|Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+<script src="cke/ckeditor.js"></script>
 </head>
 
 <body>
@@ -16,9 +17,13 @@
 	include "menu.php";
 	?>
 
-	
 	<div id="content">
 	<?php	
+	
+	        if($logged==true)
+        {
+		echo '<i onclick="editGreeting();" class="editIcon  icon-pencil"></i>';
+		}
 	
 	/* connect with a SQL server and download greeting and announcement */
 	
@@ -42,6 +47,7 @@
 	}
 	
 	?>
+
 	</div>
 	
 	<div id="announcements">

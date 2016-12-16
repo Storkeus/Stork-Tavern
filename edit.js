@@ -83,14 +83,14 @@ function editSubSubsiteName(subsiteName)
         var prefix="subsiteLink_";
         var editedDiv=document.getElementById(prefix+subsiteName);
         
-         editedDiv.innerHTML="<i onclick='location.reload()' class='icon-cancel-circled'></i><input class='editSubsiteName' id='editSubsite_"+subsiteName+"' placeholder='"+subsiteName+"' type='text'></input><i onclick=\"confirmChangeSubSubsite('"+subsiteName+"')\" class='icon-ok-circled'><div id='editLinkSubsiteDiv_"+subsiteName+"'> <span onclick=\"editLinkSubsite('"+subsiteName+"')\">LINK</span></div><span id='deleteSubsite_"+subsiteName+"' onclick=\"deleteSubsite('"+subsiteName+"')\">USUŃ</span></i>";
+         editedDiv.innerHTML="<i onclick='location.reload()' class='icon-cancel-circled'></i><input class='editSubsiteName' id='editSubsite_"+subsiteName+"' placeholder='"+subsiteName+"' type='text'></input><i onclick=\"confirmChangeSubSubsite('"+subsiteName+"')\" class='icon-ok-circled'><div id='editLinkDivSubsite_"+subsiteName+"'> <span onclick=\"editLinkSubsite('"+subsiteName+"')\">LINK</span></div><span id='deleteSubsite_"+subsiteName+"' onclick=\"deleteSubsite('"+subsiteName+"')\">USUŃ</span></i>";
 }
 
 function editLinkSubsite(name)
 {
     var prefix="editLinkDivSubsite_";
     var editedDiv=document.getElementById(prefix+name);
-    editedDiv.innerHTML="<i onclick='location.reload()' class='icon-cancel-circled'></i><input class='editSubsiteName' id='editLinkInputSubsite_"+name+"' placeholder='nazwa pliku' type='text'></input><i onclick=\"confirmChangeCategoryLinkSubsite('"+name+"')\" class='icon-ok-circled'></i>";
+    editedDiv.innerHTML="<i onclick='location.reload()' class='icon-cancel-circled'></i><input class='editSubsiteName' id='editLinkInputSubsite_"+name+"' placeholder='nazwa pliku' type='text'></input><i onclick=\"confirmChangeSubsiteLink('"+name+"')\" class='icon-ok-circled'></i>";
 }
 
 function confirmChangeSubSubsite(subsiteName)
@@ -113,4 +113,45 @@ function confirmChangeSubSubsite(subsiteName)
         xmlhttp.open("GET", "changeSubSubsiteName.php?new_name="+newName+"&old_name="+subsiteName, true);
         xmlhttp.send();
     }
+}
+
+function confirmChangeSubsiteLink(name)
+{
+     var inputId="editLinkInputSubsite_"+name;
+    var divId="editLinkDivSubsite_"+name;
+    var newLink=document.getElementById(inputId).value;
+          
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                if(newLink=="")var message="Usunięto link";
+                else var message="Zmieniono link na: "+this.responseText;
+                document.getElementById(divId).innerHTML = message
+            }
+        };
+        xmlhttp.open("GET", "changeSubsiteLink.php?new_link="+newLink+"&name="+name, true);
+        xmlhttp.send();
+    
+}
+
+function editGreeting()
+{
+    var text=document.getElementById('content').innerHTML;
+ document.getElementById('content').innerHTML="<textarea name=\"editor1\" id=\"editor1\" rows=\"10\" cols=\"80\">"+text+"</textarea><i onclick='location.reload()' class='icon-cancel-circled'><i onclick=\"confirmChangeGreeting()\" class='icon-ok-circled'>";
+  CKEDITOR.replace('editor1');  
+}
+
+function confirmChangeGreeting()
+{
+        var newGreeting=CKEDITOR.instances['editor1'].getData();
+          
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200)
+            {
+                document.getElementById('editor1').innerHTML=this.responseText;
+            }
+        };
+        xmlhttp.open("GET", "changeGreeting.php?new_greeting="+newGreeting, true);
+        xmlhttp.send();
 }
