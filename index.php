@@ -52,6 +52,11 @@
 	
 	<div id="announcements">
 	<?php
+		        if($logged==true)
+        {
+		echo '<i onclick="editAnnouncement();" class="editIcon  icon-pencil"></i>';
+		}
+	
 	echo $resultText['announcement'];	
 	$result->close();
 	$connection->close();

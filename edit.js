@@ -143,7 +143,7 @@ function editGreeting()
 
 function confirmChangeGreeting()
 {
-        var newGreeting=CKEDITOR.instances['editor1'].getData();
+        var newGreeting=encodeURIComponent(CKEDITOR.instances['editor1'].getData());
           
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function() {
@@ -155,3 +155,53 @@ function confirmChangeGreeting()
         xmlhttp.open("GET", "changeGreeting.php?new_greeting="+newGreeting, true);
         xmlhttp.send();
 }
+
+function editAnnouncement()
+{
+    var text=document.getElementById('announcements').innerHTML;
+ document.getElementById('announcements').innerHTML="<textarea name=\"editor2\" id=\"editor2\" rows=\"10\" cols=\"80\">"+text+"</textarea><i onclick='location.reload()' class='icon-cancel-circled'><i onclick=\"confirmChangeAnnouncement()\" class='icon-ok-circled'>";
+  CKEDITOR.replace('editor2');  
+}
+
+function confirmChangeAnnouncement()
+{
+            var newAnnouncement=encodeURIComponent(CKEDITOR.instances['editor2'].getData());
+          
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200)
+            {
+                document.getElementById('editor2').innerHTML=this.responseText;
+            }
+        };
+        xmlhttp.open("GET", "changeAnnouncement.php?new_announcement="+newAnnouncement, true);
+        xmlhttp.send();
+}
+
+
+function editCmpgnDescription(cmpgnName)
+{
+    var text=document.getElementById('campaignDescription').innerHTML;
+ document.getElementById('campaignDescription').innerHTML="<textarea name=\"editor1\" id=\"editor1\" rows=\"10\" cols=\"80\">"+text+"</textarea><i onclick='location.reload()' class='icon-cancel-circled'><i onclick=\"confirmChangeCmpgnDescription('"+cmpgnName+"')\" class='icon-ok-circled'>";
+  CKEDITOR.replace('editor1');  
+}
+
+
+function confirmChangeCmpgnDescription(cmpgnName)
+{
+        var newCmpgnDescription=encodeURIComponent(CKEDITOR.instances['editor1'].getData());
+
+          
+        var xmlhttp = new XMLHttpRequest( );
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200)
+            {
+                document.getElementById('editor1').innerHTML=this.responseText;
+            }
+        };
+        xmlhttp.open("GET", "changeCmpgnDescription.php?new_cmpgn_description="+newCmpgnDescription+"&cmpgn_name="+cmpgnName, true);
+        xmlhttp.send();
+}
+
+
+

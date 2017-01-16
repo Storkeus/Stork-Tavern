@@ -7,6 +7,7 @@
 <title> Tawerna pod bocianem - strona grupy RPG</title>
 <link rel="stylesheet" href="style.css" type="text/css">
 <link href='https://fonts.googleapis.com/css?family=Lato|Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+<script src="cke/ckeditor.js"></script>
 
 <script src="loadDoc.js"></script>
 
@@ -39,6 +40,10 @@
 		$resultText=$result->fetch_assoc();
 		
 		echo '<div id="campaignDescription">';
+            if($logged==true)
+            {
+            echo '<i onclick="editCmpgnDescription(\''.$fileName.'\');" class="editIcon  icon-pencil"></i>';
+            }
 		echo $resultText['cmpgn_description'];
 		echo '</div>';
 		
@@ -76,3 +81,4 @@
 	<div id="footer">
 	Wstąp do tawerny! Bartosz Łyżwa &copy 2016
 	</div>
+</body>

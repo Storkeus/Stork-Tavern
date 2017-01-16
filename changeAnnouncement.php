@@ -1,5 +1,5 @@
 <?php
-    $newGreeting=rawurldecode($_GET['new_greeting']);
+    $newAnnouncement=rawurldecode($_GET['new_announcement']);
     
     
     require_once 'connect.php';
@@ -13,13 +13,13 @@
 	}
 	else
 	{
-	    $query="UPDATE `home` SET `greeting` = '$newGreeting' WHERE `id_home`=1";
+	    $query="UPDATE `home` SET `announcement` = '$newAnnouncement' WHERE `id_home`=1";
 	    @$connection->query($query);
-	    $query="SELECT `greeting` FROM `home` WHERE `id_home`=1";
+	    $query="SELECT `announcement` FROM `home` WHERE `id_home`=1";
 	    $result=@$connection->query($query);
 	    $connection->close();
 	    $categories=$result->fetch_assoc();
-	    echo $categories['greeting'];
+	    echo $categories['announcement'];
     }
     
 ?>
