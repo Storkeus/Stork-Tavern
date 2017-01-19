@@ -6,9 +6,9 @@ header("Location: index.php");
 exit();
 }
 
-header('Content-Type: text/html; charset=utf-8');
-    $newCmpgnDescription=rawurldecode($_GET['new_cmpgn_description']);
-    $cmpgnName=$_GET['cmpgn_name'];
+    $newContent=rawurldecode($_GET['new_content']);
+    $campaignName=rawurldecode($_GET['campaign_name']);
+    $categoryName=rawurldecode($_GET['category_name']);
     
     
     require_once 'connect.php';
@@ -22,14 +22,13 @@ header('Content-Type: text/html; charset=utf-8');
 	}
 	else
 	{
-        @$connection->query($query);
-	    $query="UPDATE `cmpgn_descriptions` SET `cmpgn_description` = '$newCmpgnDescription' WHERE `cmpgn_name`='$cmpgnName'";
+	    $query="UPDATE `cmpgn_content` SET `cmpgn_category` = '$newContent' WHERE `cmpgn_name`='$campaignName' AND `cmpgn_category_name`='$categoryName'";
 	    @$connection->query($query);
-	    $query="SELECT `cmpgn_description` FROM `cmpgn_descriptions` WHERE `cmpgn_name`='$cmpgnName'";
+	    $query="SELECT `cmpgn_category` FROM `cmpgn_content` WHERE `cmpgn_name`='$campaignName' AND `cmpgn_category_name`='$newContent'";
 	    $result=@$connection->query($query);
 	    $connection->close();
 	    $categories=$result->fetch_assoc();
-	    echo $categories['cmpgn_description'];
+	    echo $categories['cmpgn_category'];
     }
     
 ?>

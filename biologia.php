@@ -54,14 +54,27 @@
             echo '<div id="campaignMenu">';
             while(($option=$result->fetch_assoc())!=null)
             {
+            $cmpgnCategoryName=$option['cmpgn_category_name'];
               echo'
-              <button  class="option" onclick="loadDoc('."'".$option['cmpgn_category_name']."','"."$fileName"."'".')">
-                <img src="'.$option['cmpgn_category_miniature'].'"><br>
+              <div id="'.$cmpgnCategoryName.'" class="option">
+              <button  class="option" onclick="loadDoc('."'".$cmpgnCategoryName."','"."$fileName"."'".')">
+                <img class="cmpgnCategoryMiniature" src="'.$option['cmpgn_category_miniature'].'"><br>
                 <span class="optionTitle">'.$option['cmpgn_category_name'].'</span>
-              </div>
+                </button>
+                </div>
               ';
+              	        if($logged==true)
+        {
+		echo '<i onclick="editCmpgnCategoryName(\''.$cmpgnCategoryName.'\', \''.$fileName.'\');" class="editIcon  icon-pencil"></i>';
+		}
             }
-            echo '</div>';
+	        if($logged==true)
+        {
+            echo '<div id="newCmpgnCategory" onclick="addNewCmpgnCategory(\''.$fileName.'\')">DODAJ</div>';
+		}
+
+                echo '</div>';
+                echo '</div>';
 		}
 		
 		$result->close();

@@ -228,3 +228,26 @@ select
     font-size:20px;
     text-align:center;
 }
+
+#newCmpgnCategory
+{
+    display:inline-block;
+}
+
+.editCmpgnCategory
+{
+    background:none;
+    border:none;
+    color:#dedede;
+    font-style:italic;
+    width:220px;
+    height:100%;
+    font-size:20px;
+    text-align:center;
+}
+
+.cmpgnCategoryMiniature
+{
+    width:200px;
+    height:267px;
+}

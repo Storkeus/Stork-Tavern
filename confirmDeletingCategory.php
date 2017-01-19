@@ -6,8 +6,8 @@ header("Location: index.php");
 exit();
 }
 
-    $newGreeting=rawurldecode($_GET['new_greeting']);
-    
+    $categoryName=$_GET['category_name'];
+    $campaignName=$_GET['campaign_name'];
     
     require_once 'connect.php';
     
@@ -20,13 +20,11 @@ exit();
 	}
 	else
 	{
-	    $query="UPDATE `home` SET `greeting` = '$newGreeting' WHERE `id_home`=1";
+	    $query="UPDATE `cmpgn_content` SET `cmpgn_name`= '__DELETED' WHERE `cmpgn_name`='$campaignName' AND `cmpgn_category_name`='$categoryName'";
 	    @$connection->query($query);
-	    $query="SELECT `greeting` FROM `home` WHERE `id_home`=1";
-	    $result=@$connection->query($query);
 	    $connection->close();
-	    $categories=$result->fetch_assoc();
-	    echo $categories['greeting'];
     }
     
+    
 ?>
+ 
