@@ -6,7 +6,7 @@ header("Location: index.php");
 exit();
 }
 
-    $newContent=rawurldecode($_GET['new_content']);
+    $newContent='<div id="bugfixCBA">'.rawurldecode($_GET['new_content']).'</div>';
     $campaignName=rawurldecode($_GET['campaign_name']);
     $categoryName=rawurldecode($_GET['category_name']);
     
@@ -24,11 +24,6 @@ exit();
 	{
 	    $query="UPDATE `cmpgn_content` SET `cmpgn_category` = '$newContent' WHERE `cmpgn_name`='$campaignName' AND `cmpgn_category_name`='$categoryName'";
 	    @$connection->query($query);
-	    $query="SELECT `cmpgn_category` FROM `cmpgn_content` WHERE `cmpgn_name`='$campaignName' AND `cmpgn_category_name`='$newContent'";
-	    $result=@$connection->query($query);
 	    $connection->close();
-	    $categories=$result->fetch_assoc();
-	    echo $categories['cmpgn_category'];
     }
-    
 ?>

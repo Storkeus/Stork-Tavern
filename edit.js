@@ -308,7 +308,7 @@ function deleteCmpgnCategoryName(categoryName, campaignName)
 
 function editCmpgnCategoryContent(categoryName, campaignName)
 {
-    var text=document.getElementById('optionContent').innerHTML;
+    var text=document.getElementById('bugfixCBA').innerHTML;
     document.getElementById('optionContent').innerHTML="<textarea name=\"editor1\" id=\"editor2\" rows=\"10\" cols=\"80\">"+text+"</textarea><i onclick='location.reload()' class='icon-cancel-circled'><i onclick=\"confirmChangeCmpgnCategoryContent('"+categoryName+"', '"+campaignName+"')\" class='icon-ok-circled'>";
     CKEDITOR.replace('editor1');  
 }
