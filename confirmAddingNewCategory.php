@@ -13,7 +13,7 @@
 	}
 	else
 	{
-	    $query="INSERT INTO `cmpgn_content`(`cmpgn_name`, `cmpgn_category_name`, `cmpgn_category`, `cmpgn_category_miniature`) VALUES ('$campaign','$name','Miejsce na zawartość kategorii','$image')";
+	    $query="INSERT INTO `cmpgn_content`(`cmpgn_name`, `cmpgn_category_name`, `cmpgn_category`, `cmpgn_category_miniature`) VALUES ('$campaign','$name','<div id=\"bugfixCBA\">Miejsce na zawartość kategorii</div>','$image')";
 	    @$connection->query($query);
 	    $connection->close();
     }
