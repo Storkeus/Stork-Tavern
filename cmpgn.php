@@ -16,8 +16,17 @@ else
     if($result==false){echo 'Zapytanie nie zostało wykonane poprawne :('; $connection->close();}
     else
     {
+    
     $content=$result->fetch_assoc();
+    
+   @ session_start();
+    if(isset($_SESSION['logged'])&& $_SESSION['logged']=true)
+    {
+		echo '<i onclick="editCmpgnCategoryContent(\''.$choose.'\', \''.$name.'\');" class="editIcon  icon-pencil"></i>';
+    }
+    
     echo $content['cmpgn_category'];
+    
     }
 }
 

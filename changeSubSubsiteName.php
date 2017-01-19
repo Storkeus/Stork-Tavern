@@ -1,4 +1,12 @@
 <?php
+session_start();
+
+if(!isset($_SESSION['logged'])or $_SESSION['logged']=false)
+{
+header("Location: index.php");
+exit();
+}
+
     $newName=$_GET['new_name'];
     $oldName=$_GET['old_name'];
     

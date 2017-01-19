@@ -2,6 +2,12 @@
 
 session_start();
 
+if(isset($_SESSION['logged'])or $_SESSION['logged']=true)
+{
+header("Location: index.php");
+exit();
+}
+
 require_once 'connect.php';
 
 $connection=@new mysqli($host,$db_user,$db_password,$db_name);
@@ -31,7 +37,7 @@ $checkPassword=htmlentities($checkPassword,ENT_QUOTES,"UTF-8");
         $_SESSION['user']=$row['login'];
         unset($_SESSION['errorLogin']);
         $checkQuery->close();
-        header('Location:admin.php');
+        header('Location:index.php');
         }
         else
         {
